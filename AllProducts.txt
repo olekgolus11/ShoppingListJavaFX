@@ -1,0 +1,10 @@
+spożywcze, chleb
+spożywcze, mleko
+spożywcze, bułka
+spożywcze, masło
+chemia, mydło
+chemia, szampon
+chemia, płyn do mycia naczyń
+motoryzacja, wycieraczki
+motoryzacja, opony
+motoryzacja, odświeżacz powietrza
