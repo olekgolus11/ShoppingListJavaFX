@@ -11,14 +11,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
+        FXMLLoader shoppingListView = new FXMLLoader(Main.class.getResource("shopping-list-view.fxml"));
+        Scene shoppingListScene = new Scene(shoppingListView.load(), 320, 240);
+        stage.setTitle("Shopping list");
+        stage.setScene(shoppingListScene);
         stage.show();
     }
 
     public static void main(String[] args) {
+        launch();
         UserManager userManager = new UserManager();
         boolean isProgramRunning = true;
         while (isProgramRunning) {
