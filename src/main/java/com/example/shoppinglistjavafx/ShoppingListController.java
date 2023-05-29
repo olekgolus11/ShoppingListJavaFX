@@ -1,9 +1,14 @@
 package com.example.shoppinglistjavafx;
 
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 
-public class ShoppingListController {
+public class ShoppingListController extends UserManager {
+    public ListView productsList;
+
     @FXML
     private Label selectedOptionText;
 
@@ -21,6 +26,8 @@ public class ShoppingListController {
     @FXML
     protected void onDisplayAllProductsFromCategoryButtonClick() {
         selectedOptionText.setText("Display all products from category");
+        ObservableList<String> items = this.getShoppingList().getAllProductsFromCategory(0);
+        productsList.setItems(items);
     }
 
     @FXML

@@ -9,7 +9,7 @@ public class ShoppingCategory {
 
     public ShoppingCategory(String categoryName, String product) {
         this.categoryName = categoryName;
-        this.products = new ArrayList<String>();
+        this.products = new ArrayList<>();
         this.products.add(product);
     }
 

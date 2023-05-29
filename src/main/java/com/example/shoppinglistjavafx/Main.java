@@ -20,11 +20,5 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch();
-        UserManager userManager = new UserManager();
-        boolean isProgramRunning = true;
-        while (isProgramRunning) {
-            userManager.showAllOptions();
-            isProgramRunning = userManager.selectOption();
-        }
     }
 }

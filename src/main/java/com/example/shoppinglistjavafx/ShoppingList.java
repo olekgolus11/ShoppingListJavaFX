@@ -1,5 +1,8 @@
 package com.example.shoppinglistjavafx;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -67,6 +70,19 @@ public class ShoppingList {
             System.out.println("   " + (productIndex + 1) + ". " + currentCategory.getProductName(productIndex));
         }
         return true;
+    }
+
+    public ObservableList<String> getAllProductsFromCategory(int categoryIndex) {
+        if (categoryIndex < 0 || categoryIndex >= shoppingListSize) {
+            throw new IllegalArgumentException("Nie ma takiej kategorii");
+        }
+
+        ShoppingCategory currentCategory = categories.get(categoryIndex);
+        String[] products = new String[currentCategory.getCategorySize()];
+        for (int productIndex = 0; productIndex < currentCategory.getCategorySize(); productIndex++) {
+            products[productIndex] = currentCategory.getProductName(productIndex);
+        }
+        return FXCollections.observableArrayList(products);
     }
 
     public void viewAllCategoryNames() {

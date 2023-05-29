@@ -138,4 +138,8 @@ public class UserManager {
     public String getSelectedProductName(int selectedCategoryIndex, int selectedProductIndex) {
         return availableProductsShoppingList.getCategories().get(selectedCategoryIndex).getProductName(selectedProductIndex);
     }
+
+    public ShoppingList getShoppingList() {
+        return shoppingList;
+    }
 }
