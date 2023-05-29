@@ -11,6 +11,15 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Label fx:id="selectedOptionText"/>
+    <Button text="Add product to shopping list" onAction="#onAddProductButtonClick"/>
+    <Button text="Display all products" onAction="#onDisplayAllProductsButtonClick"/>
+    <Button text="Display all products from category" onAction="#onDisplayAllProductsFromCategoryButtonClick"/>
+    <Button text="Reset shopping list" onAction="#onResetShoppingListButtonClick"/>
+    <Button text="Delete all products from category" onAction="#onDeleteAllProductsFromCategoryButtonClick"/>
+    <Button text="Delete product from category" onAction="#onDeleteProductFromCategoryButtonClick"/>
+    <Button text="Save list" onAction="#onSaveListButtonClick"/>
+    <Button text="Exit" onAction="#onExitButtonClick"/>
+
+
 </VBox>
