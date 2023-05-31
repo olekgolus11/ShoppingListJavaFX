@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36c297f8-028d-4473-820c-9460ca3acb70" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/utilities/ListAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/UserManager.java" afterDir="false" />
@@ -18,7 +17,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -90,6 +101,7 @@
       <workItem from="1685356152918" duration="159000" />
       <workItem from="1685356324191" duration="1507000" />
       <workItem from="1685358584478" duration="5919000" />
+      <workItem from="1685561554169" duration="3688000" />
     </task>
     <servers />
   </component>

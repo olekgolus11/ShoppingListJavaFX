@@ -142,4 +142,8 @@ public class UserManager {
     public ShoppingList getShoppingList() {
         return shoppingList;
     }
+
+    public ShoppingList getAvailableProductsShoppingList() {
+        return availableProductsShoppingList;
+    }
 }

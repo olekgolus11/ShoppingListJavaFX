@@ -12,8 +12,8 @@
             <Label fx:id="selectedOptionText"/>
             <Button text="Add product to shopping list" onAction="#onAddProductButtonClick"/>
             <Button text="Display all selected products" onAction="#onDisplayAllProductsButtonClick"/>
-            <Button text="Display all available products from category"
-                    onAction="#onDisplayAllProductsFromCategoryButtonClick"/>
+            <Button text="Display all available products"
+                    onAction="#onDisplayAllAvailableProductsButtonClick"/>
             <Button text="Reset shopping list" onAction="#onResetShoppingListButtonClick"/>
             <Button text="Delete all selected products from category"
                     onAction="#onDeleteAllProductsFromCategoryButtonClick"/>
@@ -22,7 +22,7 @@
             <Button text="Exit" onAction="#onExitButtonClick"/>
         </VBox>
         <VBox spacing="20.0">
-            <ListView fx:id="productsList"/>
+            <ListView fx:id="productsList" onMouseClicked="#handleSelectedListItem"/>
         </VBox>
     </HBox>
 

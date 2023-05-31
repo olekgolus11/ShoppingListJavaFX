@@ -1,0 +1,12 @@
+package utilities;
+
+public enum ListAction {
+    ADD_PRODUCT,
+    DISPLAY_ALL_PRODUCTS,
+    DISPLAY_ALL_AVAILABLE_PRODUCTS,
+    RESET_LIST,
+    DELETE_ALL_PRODUCTS,
+    DELETE_PRODUCT,
+    SAVE_LIST,
+    EXIT
+}

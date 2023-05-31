@@ -15,7 +15,7 @@ public class ShoppingList {
 
     private int shoppingListSize;
 
-    private int findCategoryIndex(String categoryName) {
+    public int findCategoryIndex(String categoryName) {
         int categoryIndex = 0;
         for (; categoryIndex < shoppingListSize; categoryIndex++) {
             if (categoryName.equals(categories.get(categoryIndex).getCategoryName())) {
@@ -163,5 +163,14 @@ public class ShoppingList {
 
     public int getShoppingListSize(){
         return shoppingListSize;
+    }
+
+    public ObservableList<String> getAllCategoryNames() {
+        String[] categoryNames = new String[shoppingListSize];
+        for (int categoryIndex = 0; categoryIndex < shoppingListSize; categoryIndex++) {
+            ShoppingCategory currentCategory = categories.get(categoryIndex);
+            categoryNames[categoryIndex] = currentCategory.getCategoryName();
+        }
+        return FXCollections.observableArrayList(categoryNames);
     }
 }
