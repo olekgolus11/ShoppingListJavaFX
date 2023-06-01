@@ -95,7 +95,7 @@ public class ShoppingList {
 
     public void saveShoppingList(){
         try {
-            FileWriter writer = new FileWriter("ShoppingList.txt");
+            FileWriter writer = new FileWriter("ShoppingList0.txt");
             for (int categoryIndex = 0; categoryIndex < shoppingListSize; categoryIndex++) {
                 ShoppingCategory currentCategory = categories.get(categoryIndex);
                 for (int productIndex = 0; productIndex < currentCategory.getCategorySize(); productIndex++) {

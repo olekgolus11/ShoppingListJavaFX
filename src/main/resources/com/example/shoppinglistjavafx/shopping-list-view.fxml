@@ -8,6 +8,11 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.shoppinglistjavafx.ShoppingListController">
     <HBox alignment="CENTER">
+        <VBox>
+            <Label fx:id="selectedShoppingListText"/>
+            <Button text="Create new shopping list" onAction="#onCreateNewShoppingListButtonClick"/>
+            <ListView fx:id="shoppingLists" onMouseClicked="#handleSelectedShoppingList"/>
+        </VBox>
         <VBox spacing="20.0">
             <Label fx:id="selectedOptionText"/>
             <Button text="Add product to shopping list" onAction="#onAddProductButtonClick"/>

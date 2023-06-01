@@ -4,10 +4,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 import utilities.ListAction;
 
-public class ShoppingListController extends UserManager {
+public class ShoppingListController extends ShoppingListsManager {
 
     private boolean isCategorySelected;
     private int selectedCategoryIndex;
@@ -17,6 +16,10 @@ public class ShoppingListController extends UserManager {
 
     @FXML
     private Label selectedOptionText;
+
+    @FXML
+    private Label selectedShoppingListText;
+
 
     private String getSelectedItem() {
         return (String) productsList.getSelectionModel().getSelectedItem();
@@ -31,31 +34,35 @@ public class ShoppingListController extends UserManager {
 
     private void displayAllProducts() {
         selectedCategoryName = getSelectedItem();
-        selectedCategoryIndex = this.getShoppingList().findCategoryIndex(selectedCategoryName);
-        ObservableList<String> items = this.getShoppingList().getAllProductsFromCategory(selectedCategoryIndex);
+        selectedCategoryIndex = this.getShoppingList(0).findCategoryIndex(selectedCategoryName);
+        ObservableList<String> items = this.getShoppingList(0).getAllProductsFromCategory(selectedCategoryIndex);
         productsList.setItems(items);
     }
 
     private void addProductToList() {
         String selectedProduct = getSelectedItem();
-        this.getShoppingList().addProduct(selectedProduct, selectedCategoryName);
+        this.getShoppingList(0).addProduct(selectedProduct, selectedCategoryName);
         productsList.setItems(null);
     }
 
     private void resetList() {
-        this.getShoppingList().deleteAllProducts();
+        this.getShoppingList(0).deleteAllProducts();
         productsList.setItems(null);
     }
 
     private void deleteAllItemsFromCategory() {
-        this.getShoppingList().deleteAllProductsFromCategory(selectedCategoryIndex);
+        this.getShoppingList(0).deleteAllProductsFromCategory(selectedCategoryIndex);
         productsList.setItems(null);
     }
 
     private void deleteItemFromCategory() {
         String selectedProduct = getSelectedItem();
-        this.getShoppingList().deleteProductFromCategory(selectedCategoryIndex, selectedProduct);
+        this.getShoppingList(0).deleteProductFromCategory(selectedCategoryIndex, selectedProduct);
         productsList.setItems(null);
+    }
+
+    private void createNewShoppingList(){
+
     }
 
 
@@ -101,7 +108,7 @@ public class ShoppingListController extends UserManager {
     protected void onDisplayAllProductsButtonClick() {
         selectedAction = ListAction.DISPLAY_ALL_PRODUCTS;
         selectedOptionText.setText("Display all added products from selected category");
-        productsList.setItems(this.getShoppingList().getAllCategoryNames());
+        productsList.setItems(this.getShoppingList(0).getAllCategoryNames());
         isCategorySelected = false;
     }
 
@@ -124,7 +131,7 @@ public class ShoppingListController extends UserManager {
     protected void onDeleteAllProductsFromCategoryButtonClick() {
         selectedAction = ListAction.DELETE_ALL_PRODUCTS;
         selectedOptionText.setText("Delete all products from category");
-        productsList.setItems(this.getShoppingList().getAllCategoryNames());
+        productsList.setItems(this.getShoppingList(0).getAllCategoryNames());
         isCategorySelected = false;
     }
 
@@ -132,7 +139,7 @@ public class ShoppingListController extends UserManager {
     protected void onDeleteProductFromCategoryButtonClick() {
         selectedAction = ListAction.DELETE_PRODUCT;
         selectedOptionText.setText("Delete product from category");
-        productsList.setItems(this.getShoppingList().getAllCategoryNames());
+        productsList.setItems(this.getShoppingList(0).getAllCategoryNames());
         isCategorySelected = false;
     }
 
@@ -140,7 +147,7 @@ public class ShoppingListController extends UserManager {
     protected void onSaveListButtonClick() {
         selectedAction = ListAction.SAVE_LIST;
         selectedOptionText.setText("Save list");
-        this.getShoppingList().saveShoppingList();
+        this.getShoppingList(0).saveShoppingList();
     }
 
     @FXML
@@ -148,5 +155,11 @@ public class ShoppingListController extends UserManager {
         selectedOptionText.setText("Exit");
         selectedAction = ListAction.EXIT;
         System.exit(0);
+    }
+
+    @FXML
+    protected void onCreateNewShoppingListButtonClick() {
+        selectedShoppingListText.setText("New shopping list");
+        this.createNewShoppingList();
     }
 }
