@@ -19,7 +19,6 @@ public class ShoppingListController extends ShoppingListsManager {
         super();
         productsList = new ListView();
         shoppingListsList = new ListView();
-        displayShoppingLists();
         isCategorySelected = false;
     }
 
@@ -47,30 +46,30 @@ public class ShoppingListController extends ShoppingListsManager {
 
     private void displayAllProducts() {
         selectedCategoryName = getSelectedItem();
-        selectedCategoryIndex = this.getShoppingList(0).findCategoryIndex(selectedCategoryName);
-        ObservableList<String> items = this.getShoppingList(0).getAllProductsFromCategory(selectedCategoryIndex);
+        selectedCategoryIndex = this.getShoppingList(this.getSelectedShoppingListIndex()).findCategoryIndex(selectedCategoryName);
+        ObservableList<String> items = this.getShoppingList(this.getSelectedShoppingListIndex()).getAllProductsFromCategory(selectedCategoryIndex);
         productsList.setItems(items);
     }
 
     private void addProductToList() {
         String selectedProduct = getSelectedItem();
-        this.getShoppingList(0).addProduct(selectedProduct, selectedCategoryName);
+        this.getShoppingList(this.getSelectedShoppingListIndex()).addProduct(selectedProduct, selectedCategoryName);
         productsList.setItems(null);
     }
 
     private void resetList() {
-        this.getShoppingList(0).deleteAllProducts();
+        this.getShoppingList(this.getSelectedShoppingListIndex()).deleteAllProducts();
         productsList.setItems(null);
     }
 
     private void deleteAllItemsFromCategory() {
-        this.getShoppingList(0).deleteAllProductsFromCategory(selectedCategoryIndex);
+        this.getShoppingList(this.getSelectedShoppingListIndex()).deleteAllProductsFromCategory(selectedCategoryIndex);
         productsList.setItems(null);
     }
 
     private void deleteItemFromCategory() {
         String selectedProduct = getSelectedItem();
-        this.getShoppingList(0).deleteProductFromCategory(selectedCategoryIndex, selectedProduct);
+        this.getShoppingList(this.getSelectedShoppingListIndex()).deleteProductFromCategory(selectedCategoryIndex, selectedProduct);
         productsList.setItems(null);
     }
 
@@ -111,6 +110,7 @@ public class ShoppingListController extends ShoppingListsManager {
     @FXML
     protected void handleSelectedShoppingList() {
         this.setSelectedShoppingListIndex(shoppingListsList.getSelectionModel().getSelectedIndex());
+        shoppingListsList.setItems(null);
     }
 
     @FXML
@@ -119,13 +119,14 @@ public class ShoppingListController extends ShoppingListsManager {
         selectedOptionText.setText("Add product");
         productsList.setItems(this.getAvailableProductsShoppingList().getAllCategoryNames());
         isCategorySelected = false;
+        displayShoppingLists();
     }
 
     @FXML
     protected void onDisplayAllProductsButtonClick() {
         selectedAction = ListAction.DISPLAY_ALL_PRODUCTS;
         selectedOptionText.setText("Display all added products from selected category");
-        productsList.setItems(this.getShoppingList(0).getAllCategoryNames());
+        productsList.setItems(this.getShoppingList(this.getSelectedShoppingListIndex()).getAllCategoryNames());
         isCategorySelected = false;
     }
 
@@ -148,7 +149,7 @@ public class ShoppingListController extends ShoppingListsManager {
     protected void onDeleteAllProductsFromCategoryButtonClick() {
         selectedAction = ListAction.DELETE_ALL_PRODUCTS;
         selectedOptionText.setText("Delete all products from category");
-        productsList.setItems(this.getShoppingList(0).getAllCategoryNames());
+        productsList.setItems(this.getShoppingList(this.getSelectedShoppingListIndex()).getAllCategoryNames());
         isCategorySelected = false;
     }
 
@@ -156,7 +157,7 @@ public class ShoppingListController extends ShoppingListsManager {
     protected void onDeleteProductFromCategoryButtonClick() {
         selectedAction = ListAction.DELETE_PRODUCT;
         selectedOptionText.setText("Delete product from category");
-        productsList.setItems(this.getShoppingList(0).getAllCategoryNames());
+        productsList.setItems(this.getShoppingList(this.getSelectedShoppingListIndex()).getAllCategoryNames());
         isCategorySelected = false;
     }
 
@@ -164,19 +165,26 @@ public class ShoppingListController extends ShoppingListsManager {
     protected void onSaveListButtonClick() {
         selectedAction = ListAction.SAVE_LIST;
         selectedOptionText.setText("Save list");
-        this.getShoppingList(0).saveShoppingList();
+        this.getShoppingList(this.getSelectedShoppingListIndex()).saveShoppingList(this.getSelectedShoppingListIndex());
     }
 
     @FXML
     protected void onExitButtonClick() {
         selectedOptionText.setText("Exit");
         selectedAction = ListAction.EXIT;
-        System.exit(0);
+        System.exit(this.getSelectedShoppingListIndex());
     }
 
     @FXML
     protected void onCreateNewShoppingListButtonClick() {
         selectedShoppingListText.setText("New shopping list");
         this.createNewShoppingList();
+        shoppingListsList.setItems(null);
+    }
+
+    @FXML
+    protected void onSelectShoppingListButtonClick() {
+        selectedShoppingListText.setText("Selected shopping list");
+        displayShoppingLists();
     }
 }

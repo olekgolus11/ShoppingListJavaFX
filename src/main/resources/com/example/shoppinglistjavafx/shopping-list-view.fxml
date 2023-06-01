@@ -11,6 +11,7 @@
         <VBox>
             <Label fx:id="selectedShoppingListText"/>
             <Button text="Create new shopping list" onAction="#onCreateNewShoppingListButtonClick"/>
+            <Button text="Select shopping list" onAction="#onSelectShoppingListButtonClick"/>
             <ListView fx:id="shoppingListsList" onMouseClicked="#handleSelectedShoppingList"/>
         </VBox>
         <VBox spacing="20.0">

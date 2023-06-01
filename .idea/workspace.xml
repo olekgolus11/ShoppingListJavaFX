@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="36c297f8-028d-4473-820c-9460ca3acb70" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShoppingList0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingList0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/shoppinglistjavafx/shopping-list-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/shoppinglistjavafx/shopping-list-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,17 +118,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
