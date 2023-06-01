@@ -1,6 +1,5 @@
 package com.example.shoppinglistjavafx;
 
-import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -19,22 +18,26 @@ public class ShoppingListController extends UserManager {
     @FXML
     private Label selectedOptionText;
 
+    private String getSelectedItem() {
+        return (String) productsList.getSelectionModel().getSelectedItem();
+    }
+
     private void displayAllAvailableProducts() {
-        selectedCategoryName = (String) productsList.getSelectionModel().getSelectedItem();
+        selectedCategoryName = getSelectedItem();
         selectedCategoryIndex = this.getAvailableProductsShoppingList().findCategoryIndex(selectedCategoryName);
         ObservableList<String> items = this.getAvailableProductsShoppingList().getAllProductsFromCategory(selectedCategoryIndex);
         productsList.setItems(items);
     }
 
     private void displayAllProducts() {
-        selectedCategoryName = (String) productsList.getSelectionModel().getSelectedItem();
+        selectedCategoryName = getSelectedItem();
         selectedCategoryIndex = this.getShoppingList().findCategoryIndex(selectedCategoryName);
         ObservableList<String> items = this.getShoppingList().getAllProductsFromCategory(selectedCategoryIndex);
         productsList.setItems(items);
     }
 
     private void addProductToList() {
-        String selectedProduct = (String) productsList.getSelectionModel().getSelectedItem();
+        String selectedProduct = getSelectedItem();
         this.getShoppingList().addProduct(selectedProduct, selectedCategoryName);
         productsList.setItems(null);
     }
@@ -50,14 +53,14 @@ public class ShoppingListController extends UserManager {
     }
 
     private void deleteItemFromCategory() {
-        String selectedProduct = (String) productsList.getSelectionModel().getSelectedItem();
+        String selectedProduct = getSelectedItem();
         this.getShoppingList().deleteProductFromCategory(selectedCategoryIndex, selectedProduct);
         productsList.setItems(null);
     }
 
 
     @FXML
-    protected void handleSelectedListItem(MouseEvent event) {
+    protected void handleSelectedListItem() {
         switch (selectedAction) {
             case ADD_PRODUCT -> {
                 if (!isCategorySelected) {
@@ -82,10 +85,7 @@ public class ShoppingListController extends UserManager {
                     deleteItemFromCategory();
                 }
             }
-            default -> {
-            }
         }
-
         isCategorySelected = true;
     }
 
@@ -93,8 +93,7 @@ public class ShoppingListController extends UserManager {
     protected void onAddProductButtonClick() {
         selectedAction = ListAction.ADD_PRODUCT;
         selectedOptionText.setText("Add product");
-        ObservableList<String> items = this.getAvailableProductsShoppingList().getAllCategoryNames();
-        productsList.setItems(items);
+        productsList.setItems(this.getAvailableProductsShoppingList().getAllCategoryNames());
         isCategorySelected = false;
     }
 
@@ -102,8 +101,7 @@ public class ShoppingListController extends UserManager {
     protected void onDisplayAllProductsButtonClick() {
         selectedAction = ListAction.DISPLAY_ALL_PRODUCTS;
         selectedOptionText.setText("Display all added products from selected category");
-        ObservableList<String> items = this.getShoppingList().getAllCategoryNames();
-        productsList.setItems(items);
+        productsList.setItems(this.getShoppingList().getAllCategoryNames());
         isCategorySelected = false;
     }
 
@@ -111,47 +109,44 @@ public class ShoppingListController extends UserManager {
     protected void onDisplayAllAvailableProductsButtonClick() {
         selectedAction = ListAction.DISPLAY_ALL_AVAILABLE_PRODUCTS;
         selectedOptionText.setText("Display all products from selected category");
-        ObservableList<String> items = this.getAvailableProductsShoppingList().getAllCategoryNames();
-        productsList.setItems(items);
+        productsList.setItems(this.getAvailableProductsShoppingList().getAllCategoryNames());
         isCategorySelected = false;
     }
 
     @FXML
     protected void onResetShoppingListButtonClick() {
         selectedAction = ListAction.RESET_LIST;
-        resetList();
         selectedOptionText.setText("Reset shopping list");
+        resetList();
     }
 
     @FXML
     protected void onDeleteAllProductsFromCategoryButtonClick() {
         selectedAction = ListAction.DELETE_ALL_PRODUCTS;
-        ObservableList<String> items = this.getShoppingList().getAllCategoryNames();
-        productsList.setItems(items);
         selectedOptionText.setText("Delete all products from category");
+        productsList.setItems(this.getShoppingList().getAllCategoryNames());
         isCategorySelected = false;
     }
 
     @FXML
     protected void onDeleteProductFromCategoryButtonClick() {
         selectedAction = ListAction.DELETE_PRODUCT;
-        ObservableList<String> items = this.getShoppingList().getAllCategoryNames();
-        productsList.setItems(items);
         selectedOptionText.setText("Delete product from category");
+        productsList.setItems(this.getShoppingList().getAllCategoryNames());
         isCategorySelected = false;
     }
 
     @FXML
     protected void onSaveListButtonClick() {
         selectedAction = ListAction.SAVE_LIST;
-        this.getShoppingList().saveShoppingList();
         selectedOptionText.setText("Save list");
+        this.getShoppingList().saveShoppingList();
     }
 
     @FXML
     protected void onExitButtonClick() {
-        selectedAction = ListAction.EXIT;
         selectedOptionText.setText("Exit");
+        selectedAction = ListAction.EXIT;
         System.exit(0);
     }
 }

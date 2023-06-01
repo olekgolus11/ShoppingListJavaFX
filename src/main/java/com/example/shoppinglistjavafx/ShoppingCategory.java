@@ -3,9 +3,8 @@ package com.example.shoppinglistjavafx;
 import java.util.ArrayList;
 
 public class ShoppingCategory {
-    private String categoryName;
-
-    private ArrayList<String> products;
+    private final String categoryName;
+    private final ArrayList<String> products;
 
     public ShoppingCategory(String categoryName, String product) {
         this.categoryName = categoryName;
@@ -14,15 +13,17 @@ public class ShoppingCategory {
     }
 
     public void addProduct(String product) {
-        if (products.contains(product)) {
-            System.out.println("Produkt juz znajduje sie na liscie");
-            return;
+        if (!products.contains(product)) {
+            products.add(product);
         }
-        products.add(product);
     }
 
     public void deleteProduct(String product) {
         products.remove(product);
+    }
+
+    public void deleteAllProducts() {
+        products.clear();
     }
 
     public String getCategoryName() {
@@ -37,7 +38,4 @@ public class ShoppingCategory {
         return products.size();
     }
 
-    public void deleteAllProducts() {
-        products.clear();
-    }
 }

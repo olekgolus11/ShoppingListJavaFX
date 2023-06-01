@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="36c297f8-028d-4473-820c-9460ca3acb70" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingList.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/UserManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +101,7 @@
       <workItem from="1685356324191" duration="1507000" />
       <workItem from="1685358584478" duration="5919000" />
       <workItem from="1685561554169" duration="3767000" />
-      <workItem from="1685607532650" duration="4477000" />
+      <workItem from="1685607532650" duration="5516000" />
     </task>
     <servers />
   </component>
@@ -116,17 +118,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

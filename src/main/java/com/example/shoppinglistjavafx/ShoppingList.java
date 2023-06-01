@@ -11,9 +11,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ShoppingList {
-    private ArrayList<ShoppingCategory> categories;
-
+    private final ArrayList<ShoppingCategory> categories;
     private int shoppingListSize;
+
+    public ShoppingList() {
+        shoppingListSize = 0;
+        categories = new ArrayList<>();
+    }
 
     public int findCategoryIndex(String categoryName) {
         int categoryIndex = 0;
@@ -23,11 +27,6 @@ public class ShoppingList {
             }
         }
         return -1;
-    }
-
-    public ShoppingList() {
-        shoppingListSize = 0;
-        categories = new ArrayList<ShoppingCategory>();
     }
 
     public void addCategory(String categoryName, String product) {
@@ -50,53 +49,6 @@ public class ShoppingList {
         else categories.get(categoryIndex).addProduct(product);
     }
 
-    public void viewAllProducts() {
-        if (shoppingListSize == 0) {
-            System.out.println("Lista jest pusta");
-            return;
-        }
-        for (int categoryIndex = 0; categoryIndex < shoppingListSize; categoryIndex++) {
-            ShoppingCategory currentCategory = categories.get(categoryIndex);
-            System.out.println(currentCategory.getCategoryName() + ":");
-            for (int productIndex = 0; productIndex < currentCategory.getCategorySize(); productIndex++) {
-                System.out.println("   " + currentCategory.getProductName(productIndex));
-            }
-        }
-    }
-
-    public boolean viewAllProductsFromCategory(int categoryIndex) {
-        if (categoryIndex < 0 || categoryIndex >= shoppingListSize) {
-            System.out.println("Nie ma takiej kategorii");
-            return false;
-        }
-
-        ShoppingCategory currentCategory = categories.get(categoryIndex);
-        System.out.println(currentCategory.getCategoryName() + ":");
-        for (int productIndex = 0; productIndex < currentCategory.getCategorySize(); productIndex++) {
-            System.out.println("   " + (productIndex + 1) + ". " + currentCategory.getProductName(productIndex));
-        }
-        return true;
-    }
-
-    public ObservableList<String> getAllProductsFromCategory(int categoryIndex) {
-        if (categoryIndex < 0 || categoryIndex >= shoppingListSize) {
-            throw new IllegalArgumentException("Nie ma takiej kategorii");
-        }
-
-        ShoppingCategory currentCategory = categories.get(categoryIndex);
-        String[] products = new String[currentCategory.getCategorySize()];
-        for (int productIndex = 0; productIndex < currentCategory.getCategorySize(); productIndex++) {
-            products[productIndex] = currentCategory.getProductName(productIndex);
-        }
-        return FXCollections.observableArrayList(products);
-    }
-
-    public void viewAllCategoryNames() {
-        for (int categoryIndex = 0; categoryIndex < shoppingListSize; categoryIndex++) {
-            ShoppingCategory currentCategory = categories.get(categoryIndex);
-            System.out.println((categoryIndex + 1) + ". " + currentCategory.getCategoryName());
-        }
-    }
 
     public void deleteAllProducts() {
         categories.clear();
@@ -105,8 +57,7 @@ public class ShoppingList {
 
     public void deleteAllProductsFromCategory(int categoryIndex) {
         if (categoryIndex < 0 || categoryIndex >= shoppingListSize) {
-            System.out.println("Nie ma takiej kategorii");
-            return;
+            throw new IllegalArgumentException("Nie ma takiej kategorii");
         }
 
         ShoppingCategory currentCategory = categories.get(categoryIndex);
@@ -117,8 +68,7 @@ public class ShoppingList {
 
     public void deleteProductFromCategory(int categoryIndex, String productName) {
         if (categoryIndex < 0 || categoryIndex >= shoppingListSize) {
-            System.out.println("Nie ma takiej kategorii");
-            return;
+            throw new IllegalArgumentException("Nie ma takiej kategorii");
         }
 
         ShoppingCategory currentCategory = categories.get(categoryIndex);
@@ -143,10 +93,6 @@ public class ShoppingList {
         }
     }
 
-    public ArrayList<ShoppingCategory> getCategories() {
-        return categories;
-    }
-
     public void saveShoppingList(){
         try {
             FileWriter writer = new FileWriter("ShoppingList.txt");
@@ -162,9 +108,23 @@ public class ShoppingList {
         }
     }
 
-    public int getShoppingListSize(){
-        return shoppingListSize;
+    public ObservableList<String> getAllProductsFromCategory(int categoryIndex) {
+        if (categoryIndex < 0 || categoryIndex >= shoppingListSize) {
+            throw new IllegalArgumentException("Nie ma takiej kategorii");
+        }
+
+        ShoppingCategory currentCategory = categories.get(categoryIndex);
+        String[] products = new String[currentCategory.getCategorySize()];
+        for (int productIndex = 0; productIndex < currentCategory.getCategorySize(); productIndex++) {
+            products[productIndex] = currentCategory.getProductName(productIndex);
+        }
+        return FXCollections.observableArrayList(products);
     }
+
+    public ArrayList<ShoppingCategory> getCategories() {
+        return categories;
+    }
+
 
     public ObservableList<String> getAllCategoryNames() {
         String[] categoryNames = new String[shoppingListSize];
@@ -173,9 +133,5 @@ public class ShoppingList {
             categoryNames[categoryIndex] = currentCategory.getCategoryName();
         }
         return FXCollections.observableArrayList(categoryNames);
-    }
-
-    public ShoppingCategory getShoppingCategory(int categoryIndex) {
-        return categories.get(categoryIndex);
     }
 }
