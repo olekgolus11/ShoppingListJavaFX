@@ -11,6 +11,7 @@ import utilities.ListAction;
 public class ShoppingListController extends UserManager {
 
     private boolean isCategorySelected;
+    private int selectedCategoryIndex;
     private ListAction selectedAction;
     public ListView productsList;
 
@@ -19,24 +20,36 @@ public class ShoppingListController extends UserManager {
 
     private void displayAllAvailableProducts() {
         String selectedCategory = (String) productsList.getSelectionModel().getSelectedItem();
-        int selectedCategoryIndex = this.getAvailableProductsShoppingList().findCategoryIndex(selectedCategory);
+        selectedCategoryIndex = this.getAvailableProductsShoppingList().findCategoryIndex(selectedCategory);
         ObservableList<String> items = this.getAvailableProductsShoppingList().getAllProductsFromCategory(selectedCategoryIndex);
         productsList.setItems(items);
     }
 
     private void displayAllProducts() {
         String selectedCategory = (String) productsList.getSelectionModel().getSelectedItem();
-        int selectedCategoryIndex = this.getShoppingList().findCategoryIndex(selectedCategory);
+        selectedCategoryIndex = this.getShoppingList().findCategoryIndex(selectedCategory);
         ObservableList<String> items = this.getShoppingList().getAllProductsFromCategory(selectedCategoryIndex);
         productsList.setItems(items);
+    }
+
+    private void addProductToList() {
+        String selectedProduct = (String) productsList.getSelectionModel().getSelectedItem();
+        ShoppingCategory selectedCategory = this.getShoppingList().getShoppingCategory(selectedCategoryIndex);
+        selectedCategory.addProduct(selectedProduct);
+        productsList.setItems(null);
     }
 
 
     @FXML
     protected void handleSelectedListItem(MouseEvent event) {
-        if (isCategorySelected) return;
-
         switch (selectedAction) {
+            case ADD_PRODUCT -> {
+                if (!isCategorySelected) {
+                    displayAllAvailableProducts();
+                } else {
+                    addProductToList();
+                }
+            }
             case DISPLAY_ALL_PRODUCTS -> displayAllProducts();
             case DISPLAY_ALL_AVAILABLE_PRODUCTS -> displayAllAvailableProducts();
             default -> {
@@ -50,6 +63,9 @@ public class ShoppingListController extends UserManager {
     protected void onAddProductButtonClick() {
         selectedAction = ListAction.ADD_PRODUCT;
         selectedOptionText.setText("Add product");
+        ObservableList<String> items = this.getAvailableProductsShoppingList().getAllCategoryNames();
+        productsList.setItems(items);
+        isCategorySelected = false;
     }
 
     @FXML
@@ -65,7 +81,7 @@ public class ShoppingListController extends UserManager {
     protected void onDisplayAllAvailableProductsButtonClick() {
         selectedAction = ListAction.DISPLAY_ALL_AVAILABLE_PRODUCTS;
         selectedOptionText.setText("Display all products from selected category");
-        ObservableList<String> items = this.getShoppingList().getAllCategoryNames();
+        ObservableList<String> items = this.getAvailableProductsShoppingList().getAllCategoryNames();
         productsList.setItems(items);
         isCategorySelected = false;
     }

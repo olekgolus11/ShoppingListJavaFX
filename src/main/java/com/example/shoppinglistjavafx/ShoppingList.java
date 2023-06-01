@@ -173,4 +173,8 @@ public class ShoppingList {
         }
         return FXCollections.observableArrayList(categoryNames);
     }
+
+    public ShoppingCategory getShoppingCategory(int categoryIndex) {
+        return categories.get(categoryIndex);
+    }
 }

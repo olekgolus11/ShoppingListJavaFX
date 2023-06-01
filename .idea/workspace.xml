@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36c297f8-028d-4473-820c-9460ca3acb70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/utilities/ListAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/shoppinglistjavafx/shopping-list-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/shoppinglistjavafx/shopping-list-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +98,8 @@
       <workItem from="1685356152918" duration="159000" />
       <workItem from="1685356324191" duration="1507000" />
       <workItem from="1685358584478" duration="5919000" />
-      <workItem from="1685561554169" duration="3688000" />
+      <workItem from="1685561554169" duration="3767000" />
+      <workItem from="1685607532650" duration="979000" />
     </task>
     <servers />
   </component>
