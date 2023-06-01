@@ -13,6 +13,15 @@ public class ShoppingListController extends ShoppingListsManager {
     private String selectedCategoryName;
     private ListAction selectedAction;
     public ListView productsList;
+    public ListView shoppingListsList;
+
+    public ShoppingListController() {
+        super();
+        productsList = new ListView();
+        shoppingListsList = new ListView();
+        displayShoppingLists();
+        isCategorySelected = false;
+    }
 
     @FXML
     private Label selectedOptionText;
@@ -20,6 +29,10 @@ public class ShoppingListController extends ShoppingListsManager {
     @FXML
     private Label selectedShoppingListText;
 
+    private void displayShoppingLists() {
+        ObservableList<String> items = this.getShoppingListsNumberArray();
+        shoppingListsList.setItems(items);
+    }
 
     private String getSelectedItem() {
         return (String) productsList.getSelectionModel().getSelectedItem();
@@ -62,9 +75,8 @@ public class ShoppingListController extends ShoppingListsManager {
     }
 
     private void createNewShoppingList(){
-
+        this.addShoppingList();
     }
-
 
     @FXML
     protected void handleSelectedListItem() {
@@ -94,6 +106,11 @@ public class ShoppingListController extends ShoppingListsManager {
             }
         }
         isCategorySelected = true;
+    }
+
+    @FXML
+    protected void handleSelectedShoppingList() {
+        this.setSelectedShoppingListIndex(shoppingListsList.getSelectionModel().getSelectedIndex());
     }
 
     @FXML
