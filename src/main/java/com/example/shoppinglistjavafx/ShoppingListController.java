@@ -144,6 +144,7 @@ public class ShoppingListController extends UserManager {
     @FXML
     protected void onSaveListButtonClick() {
         selectedAction = ListAction.SAVE_LIST;
+        this.getShoppingList().saveShoppingList();
         selectedOptionText.setText("Save list");
     }
 
@@ -151,5 +152,6 @@ public class ShoppingListController extends UserManager {
     protected void onExitButtonClick() {
         selectedAction = ListAction.EXIT;
         selectedOptionText.setText("Exit");
+        System.exit(0);
     }
 }
