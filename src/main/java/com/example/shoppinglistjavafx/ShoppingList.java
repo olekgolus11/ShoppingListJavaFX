@@ -115,18 +115,13 @@ public class ShoppingList {
         shoppingListSize -= 1;
     }
 
-    public void deleteProductFromCategory(int categoryIndex, int productIndex) {
+    public void deleteProductFromCategory(int categoryIndex, String productName) {
         if (categoryIndex < 0 || categoryIndex >= shoppingListSize) {
             System.out.println("Nie ma takiej kategorii");
             return;
         }
-        if (productIndex < 0 || productIndex >= categories.get(categoryIndex).getCategorySize()) {
-            System.out.println("Podano niewlasciwy numer produktu");
-            return;
-        }
 
         ShoppingCategory currentCategory = categories.get(categoryIndex);
-        String productName = currentCategory.getProductName(productIndex);
         currentCategory.deleteProduct(productName);
 
         if (currentCategory.getCategorySize() == 0) {

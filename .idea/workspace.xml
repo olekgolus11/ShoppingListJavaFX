@@ -100,7 +100,7 @@
       <workItem from="1685356324191" duration="1507000" />
       <workItem from="1685358584478" duration="5919000" />
       <workItem from="1685561554169" duration="3767000" />
-      <workItem from="1685607532650" duration="1452000" />
+      <workItem from="1685607532650" duration="4238000" />
     </task>
     <servers />
   </component>
@@ -117,6 +117,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/shoppinglistjavafx/ShoppingListController.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

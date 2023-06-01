@@ -39,6 +39,22 @@ public class ShoppingListController extends UserManager {
         productsList.setItems(null);
     }
 
+    private void resetList() {
+        this.getShoppingList().deleteAllProducts();
+        productsList.setItems(null);
+    }
+
+    private void deleteAllItemsFromCategory() {
+        this.getShoppingList().deleteAllProductsFromCategory(selectedCategoryIndex);
+        productsList.setItems(null);
+    }
+
+    private void deleteItemFromCategory() {
+        String selectedProduct = (String) productsList.getSelectionModel().getSelectedItem();
+        this.getShoppingList().deleteProductFromCategory(selectedCategoryIndex, selectedProduct);
+        productsList.setItems(null);
+    }
+
 
     @FXML
     protected void handleSelectedListItem(MouseEvent event) {
@@ -55,6 +71,16 @@ public class ShoppingListController extends UserManager {
             }
             case DISPLAY_ALL_AVAILABLE_PRODUCTS -> {
                 if (!isCategorySelected) displayAllAvailableProducts();
+            }
+            case DELETE_ALL_PRODUCTS -> {
+                if (!isCategorySelected) deleteAllItemsFromCategory();
+            }
+            case DELETE_PRODUCT -> {
+                if (!isCategorySelected){
+                    displayAllProducts();
+                } else {
+                    deleteItemFromCategory();
+                }
             }
             default -> {
             }
@@ -93,19 +119,26 @@ public class ShoppingListController extends UserManager {
     @FXML
     protected void onResetShoppingListButtonClick() {
         selectedAction = ListAction.RESET_LIST;
+        resetList();
         selectedOptionText.setText("Reset shopping list");
     }
 
     @FXML
     protected void onDeleteAllProductsFromCategoryButtonClick() {
         selectedAction = ListAction.DELETE_ALL_PRODUCTS;
+        ObservableList<String> items = this.getShoppingList().getAllCategoryNames();
+        productsList.setItems(items);
         selectedOptionText.setText("Delete all products from category");
+        isCategorySelected = false;
     }
 
     @FXML
     protected void onDeleteProductFromCategoryButtonClick() {
         selectedAction = ListAction.DELETE_PRODUCT;
+        ObservableList<String> items = this.getShoppingList().getAllCategoryNames();
+        productsList.setItems(items);
         selectedOptionText.setText("Delete product from category");
+        isCategorySelected = false;
     }
 
     @FXML
