@@ -45,7 +45,7 @@ public class UserManager {
                 System.out.println("\nWybierz produkt:");
                 if (availableProductsShoppingList.viewAllProductsFromCategory(selectedCategoryIndex)) {
                     if ((selectedProductIndex = selectProduct(selectedCategoryIndex)) == -1) break;
-                    shoppingList.addProduct(getSelectedCategoryName(selectedCategoryIndex) + ", " + getSelectedProductName(selectedCategoryIndex, selectedProductIndex));
+                    shoppingList.addProductFromTextfile(getSelectedCategoryName(selectedCategoryIndex) + ", " + getSelectedProductName(selectedCategoryIndex, selectedProductIndex));
                 }
             }
             case 2 -> {

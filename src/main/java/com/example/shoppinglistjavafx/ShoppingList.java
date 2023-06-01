@@ -35,12 +35,18 @@ public class ShoppingList {
         shoppingListSize += 1;
     }
 
-    public void addProduct(String productEntry) {
+    public void addProductFromTextfile(String productEntry) {
         String category = productEntry.substring(0, productEntry.indexOf(','));
         String product = productEntry.substring(productEntry.indexOf(' ') + 1);
 
         int categoryIndex = findCategoryIndex(category);
         if (categoryIndex == -1) addCategory(category, product);
+        else categories.get(categoryIndex).addProduct(product);
+    }
+
+    public void addProduct(String product, String categoryName){
+        int categoryIndex = findCategoryIndex(categoryName);
+        if (categoryIndex == -1) addCategory(categoryName, product);
         else categories.get(categoryIndex).addProduct(product);
     }
 
@@ -134,7 +140,7 @@ public class ShoppingList {
             File inputFile = new File(filename);
             Scanner scanner = new Scanner(inputFile);
             while (scanner.hasNextLine()) {
-                this.addProduct(scanner.nextLine());
+                this.addProductFromTextfile(scanner.nextLine());
             }
             scanner.close();
         } catch (FileNotFoundException e) {

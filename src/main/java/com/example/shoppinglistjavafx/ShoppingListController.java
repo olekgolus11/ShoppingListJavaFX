@@ -12,6 +12,7 @@ public class ShoppingListController extends UserManager {
 
     private boolean isCategorySelected;
     private int selectedCategoryIndex;
+    private String selectedCategoryName;
     private ListAction selectedAction;
     public ListView productsList;
 
@@ -19,23 +20,22 @@ public class ShoppingListController extends UserManager {
     private Label selectedOptionText;
 
     private void displayAllAvailableProducts() {
-        String selectedCategory = (String) productsList.getSelectionModel().getSelectedItem();
-        selectedCategoryIndex = this.getAvailableProductsShoppingList().findCategoryIndex(selectedCategory);
+        selectedCategoryName = (String) productsList.getSelectionModel().getSelectedItem();
+        selectedCategoryIndex = this.getAvailableProductsShoppingList().findCategoryIndex(selectedCategoryName);
         ObservableList<String> items = this.getAvailableProductsShoppingList().getAllProductsFromCategory(selectedCategoryIndex);
         productsList.setItems(items);
     }
 
     private void displayAllProducts() {
-        String selectedCategory = (String) productsList.getSelectionModel().getSelectedItem();
-        selectedCategoryIndex = this.getShoppingList().findCategoryIndex(selectedCategory);
+        selectedCategoryName = (String) productsList.getSelectionModel().getSelectedItem();
+        selectedCategoryIndex = this.getShoppingList().findCategoryIndex(selectedCategoryName);
         ObservableList<String> items = this.getShoppingList().getAllProductsFromCategory(selectedCategoryIndex);
         productsList.setItems(items);
     }
 
     private void addProductToList() {
         String selectedProduct = (String) productsList.getSelectionModel().getSelectedItem();
-        ShoppingCategory selectedCategory = this.getShoppingList().getShoppingCategory(selectedCategoryIndex);
-        selectedCategory.addProduct(selectedProduct);
+        this.getShoppingList().addProduct(selectedProduct, selectedCategoryName);
         productsList.setItems(null);
     }
 
@@ -50,8 +50,12 @@ public class ShoppingListController extends UserManager {
                     addProductToList();
                 }
             }
-            case DISPLAY_ALL_PRODUCTS -> displayAllProducts();
-            case DISPLAY_ALL_AVAILABLE_PRODUCTS -> displayAllAvailableProducts();
+            case DISPLAY_ALL_PRODUCTS -> {
+                if (!isCategorySelected) displayAllProducts();
+            }
+            case DISPLAY_ALL_AVAILABLE_PRODUCTS -> {
+                if (!isCategorySelected) displayAllAvailableProducts();
+            }
             default -> {
             }
         }
